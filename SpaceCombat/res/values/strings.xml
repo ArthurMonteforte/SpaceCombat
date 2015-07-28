@@ -10,5 +10,9 @@
     <string name="tituloDigite">Digite o seu apelido:</string>
     <string name="btnComecar">Começar</string>
     <string name="logo">logo</string>
+    <string name="gameOver">Game Over</string>
+    <string name="tituloPontuacao">Pontuação:</string>
+    <string name="pontuacao">0</string>
+    <string name="btnOk">Ok</string>
 
 </resources>
