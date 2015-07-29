@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 
 //classe que desenha a dela do jogo...é a view propriamente dita.
+//Deve ser uma thread pois deve se auto desenhar.
 public class GameScreen extends View implements Runnable{
 
 	private boolean update; //variavel que controla o update
 	private int i;
-	private Paint paint;
+	private Paint paint; //necessario para desenhar.
 	private static final String TAG = "GameScreen";
+	private Background bg;
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -27,21 +29,32 @@ public class GameScreen extends View implements Runnable{
 
 	public void uptade(){
 		if (update){
-			i++;
+			//i++;
+			bg.update();
 		}
 	
 	}
 		
 	//metodo CallBack, o android chama sozinho
 	public void onDraw (Canvas canvas){
-		canvas.drawText("Valor do i = " + i, 50, 100, paint);
+		//canvas.drawText("Valor do i = " + i, 50, 100, paint);
+		bg.draw(canvas);
 	}
 	
 	public void init (){
-		i=0;
+		//i=0;
 		update = true;
 		paint = new Paint ();
 		paint.setColor(Color.BLACK);
+		
+		//criar os objetos do jogo
+		bg = new Background();
+		
+		//definir fator de distorcao, posi cada tela de celular e diferente
+		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getFiguraAltura();
+		bg.setFiguraLargura((int)(bg.getFiguraLargura()* GameParameterSingleton.DISTORTION));
+		bg.setFiguraAltura((int)(bg.getFiguraAltura()* GameParameterSingleton.DISTORTION));
+		
 	}
 
 	//essa classe é uma thread pois deve se auto desenhar. Controla o loop do jogo

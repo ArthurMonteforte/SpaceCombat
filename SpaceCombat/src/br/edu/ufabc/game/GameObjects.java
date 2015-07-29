@@ -40,5 +40,8 @@ public abstract class GameObjects {
 	
 	abstract void draw();
 	abstract void move();
-	abstract void update();
+	//abstract void update();
+	void updateDistortion(){
+		
+	}
 }
