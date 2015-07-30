@@ -14,21 +14,24 @@ import android.util.Log;
 public class Background {
 	
 	private Bitmap figura;
-	private int figuraAltura, figuraLargura;
+	private int altura, largura;
 	String pictureName;
 	Rect src; //retangulo original do bg
 	Rect first, sec; //retangulos que compoe o bg infinito
 	
 	private static final String TAG ="InfiniteBG";
 	
+	//passo em pixels
+	private final int STEP=5;
+	
 	public Background(){
 		try {
 			InputStream is = GameParameterSingleton.assetManager.open("bg.png");
 			figura = BitmapFactory.decodeStream(is);
-			figuraAltura = figura.getHeight();
-			figuraLargura = figura.getWidth();
+			altura = figura.getHeight();
+			largura = figura.getWidth();
 			
-			src = new Rect(0,0, figuraLargura, figuraAltura);
+			src = new Rect(0,0, largura, altura);
 			first = new Rect();
 			sec = new Rect();
 			
@@ -39,10 +42,32 @@ public class Background {
 	
 	//define como o bg se move
 	public void update(){
-		first.left = 0;
-		first.left = figuraLargura;
+		/*first.left = 0;
+		first.right = largura;
 		first.top  = 0 ;
-		first.bottom = figuraAltura;
+		first.bottom = altura;*/
+		int passoDistorcido = (int) (STEP * GameParameterSingleton.DISTORTION);
+		
+		first.left -= passoDistorcido;
+		first.right -= passoDistorcido;
+		first.top  = 0 ;
+		first.bottom = altura;
+		
+		sec.left -= passoDistorcido;
+		sec.right -= passoDistorcido;
+		sec.top  = 0;
+		sec.bottom = altura;
+		
+		if (first.right <= 0){
+			first.right = sec.right;
+			first.left = sec.right + largura;
+			
+		}
+		
+		if (sec.right <= 0){
+			sec.left = first.right;
+			sec.right = first.right + largura;
+		}
 		
 	}
 	
@@ -50,27 +75,39 @@ public class Background {
 	public void draw(Canvas canvas){
 		//System.out.println("DESENHA");
 		canvas.drawBitmap(figura, src, first, null);
+		canvas.drawBitmap(figura, src, sec, null);
 		
 	}
 	
 	public void updateDistortion(){
+		setLargura((int) (getLargura() * GameParameterSingleton.DISTORTION));
+		setAltura((int) (getAltura() * GameParameterSingleton.DISTORTION));
+		first.left = 0;
+		first.top  = 0 ;
+		first.right = largura;
+		first.bottom = altura;
+		
+		sec.top  = 0;
+		sec.left = largura;
+		sec.right = sec.left + largura;
+		sec.bottom = altura;
 		
 	}
 
-	public int getFiguraAltura() {
-		return figuraAltura;
+	public int getAltura() {
+		return altura;
 	}
 
-	public void setFiguraAltura(int figuraAltura) {
-		this.figuraAltura = figuraAltura;
+	public void setAltura(int altura) {
+		this.altura = altura;
 	}
 
-	public int getFiguraLargura() {
-		return figuraLargura;
+	public int getLargura() {
+		return largura;
 	}
 
-	public void setFiguraLargura(int figuraLargura) {
-		this.figuraLargura = figuraLargura;
+	public void setLargura(int largura) {
+		this.largura = largura;
 	}
 	
 	

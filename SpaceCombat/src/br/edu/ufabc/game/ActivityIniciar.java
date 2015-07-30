@@ -32,22 +32,25 @@ public class ActivityIniciar extends Activity{
 	public void botaoComecar(View view){
 		// Ao clicar no botão Começar, inicia-se a view GameScreen (custom view do jogo)
 		
-		this.setupParamters(view.getHeight(), view.getWidth());//configura os parametros do jogo
+		this.setupParamters();//configura os parametros do jogo
 		
 		gameScreen = new GameScreen(this);
-		setContentView(gameScreen);
 		
+		
+		setContentView(gameScreen);
 		Thread t = new Thread(gameScreen); 
 		t.start();
+		
 	}
 	
 	//configura o singleton
-	public void setupParamters(int h, int w){
-		//Point size = new Point();
-		//getWindowManager().getDefaultDisplay().getSize(size);
+	public void setupParamters(){
+		Point size = new Point();
+		getWindowManager().getDefaultDisplay().getSize(size);
+		
 		GameParameterSingleton.ORIENTATION = GameParameterSingleton.PORTRAIT;
-		GameParameterSingleton.SCREEN_HEIGHT = h;//getWindowManager().getDefaultDisplay().getHeight();
-		GameParameterSingleton.SCREEN_WIDTH = w;//getWindowManager().getDefaultDisplay().getWidth();
+		GameParameterSingleton.SCREEN_HEIGHT = size.y;
+		GameParameterSingleton.SCREEN_WIDTH = size.x;
 		
 		GameParameterSingleton.assetManager = getAssets();
 		

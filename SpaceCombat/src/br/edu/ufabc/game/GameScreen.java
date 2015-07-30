@@ -22,8 +22,6 @@ public class GameScreen extends View implements Runnable{
 		super(context);
 		init();
 		i=0;
-		
-		
 	
 	}
 
@@ -50,10 +48,11 @@ public class GameScreen extends View implements Runnable{
 		//criar os objetos do jogo
 		bg = new Background();
 		
-		//definir fator de distorcao, posi cada tela de celular e diferente
-		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getFiguraAltura();
-		bg.setFiguraLargura((int)(bg.getFiguraLargura()* GameParameterSingleton.DISTORTION));
-		bg.setFiguraAltura((int)(bg.getFiguraAltura()* GameParameterSingleton.DISTORTION));
+		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
+		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();
+		//bg.setLargura((int)(bg.getLargura()* GameParameterSingleton.DISTORTION));
+		//bg.setAltura((int)(bg.getAltura()* GameParameterSingleton.DISTORTION));
+		bg.updateDistortion();
 		
 	}
 
