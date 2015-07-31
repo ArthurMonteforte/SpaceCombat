@@ -45,6 +45,7 @@ public class Background {
 		
 		int passoDistorcido = (int) (STEP * GameParameterSingleton.DISTORTION);
 		
+		//decrementa pouco em pouco pra esquerda
 		first.left -= passoDistorcido;
 		first.right -= passoDistorcido;
 		//first.top  = 0 ;

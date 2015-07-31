@@ -17,6 +17,7 @@ public class GameScreen extends View implements Runnable{
 	private Paint paint; //necessario para desenhar.
 	private static final String TAG = "GameScreen";
 	private Background bg;
+	private PlayerCharacter robot;
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -28,6 +29,7 @@ public class GameScreen extends View implements Runnable{
 	public void uptade(){
 		if (update){
 			bg.update();
+			robot.update();
 		}
 	
 	}
@@ -35,6 +37,7 @@ public class GameScreen extends View implements Runnable{
 	//metodo CallBack, o android chama sozinho
 	public void onDraw (Canvas canvas){
 		bg.draw(canvas);
+		robot.draw(canvas);
 	}
 	
 	public void init (){
@@ -44,12 +47,17 @@ public class GameScreen extends View implements Runnable{
 		
 		//criar os objetos do jogo
 		bg = new Background();
+		robot = new PlayerCharacter();
 		
 		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
 		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();
 		//bg.setLargura((int)(bg.getLargura()* GameParameterSingleton.DISTORTION));
 		//bg.setAltura((int)(bg.getAltura()* GameParameterSingleton.DISTORTION));
 		bg.updateDistortion();
+		
+		robot.setX(100);
+		robot.setY(100);
+		robot.updateDistortion();
 		
 	}
 

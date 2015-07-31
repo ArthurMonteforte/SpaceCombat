@@ -1,11 +1,20 @@
 package br.edu.ufabc.game;
 
+import android.graphics.Canvas;
+
 
 //Classe que define todo objeto dentro do jogo, seja ele a nave ou inimigos, ou mesmo o tiro.
 public abstract class GameObjects {
 
 	private int x, y, width, height;
-
+	public abstract void draw(Canvas canvas);
+	public abstract void update();
+	
+	public void updateDistortion(){
+		width =(int) (width * GameParameterSingleton.DISTORTION);
+		height = (int) (height * GameParameterSingleton.DISTORTION);
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -38,10 +47,8 @@ public abstract class GameObjects {
 		this.height = height;
 	}
 	
-	abstract void draw();
+	
 	abstract void move();
-	//abstract void update();
-	void updateDistortion(){
-		
-	}
+	
+	
 }
