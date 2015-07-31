@@ -54,7 +54,7 @@ public class ActivityIniciar extends Activity{
 		
 		//tira titulo (deixa jogo fullscree)
 		//setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //retrato
-		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 	}

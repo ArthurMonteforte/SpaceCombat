@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 //classe que desenha a dela do jogo...é a view propriamente dita.
@@ -18,11 +19,13 @@ public class GameScreen extends View implements Runnable{
 	private static final String TAG = "GameScreen";
 	private Background bg;
 	private PlayerCharacter robot;
+	private Enemy enemy;
+	private Combo combo; //desenha um combo de inimigos
 	
 	public GameScreen(Context context) {
 		super(context);
 		init();
-		i=0;
+		//i=0;
 	
 	}
 
@@ -30,6 +33,8 @@ public class GameScreen extends View implements Runnable{
 		if (update){
 			bg.update();
 			robot.update();
+			combo.update();
+			//enemy.update();
 		}
 	
 	}
@@ -38,6 +43,8 @@ public class GameScreen extends View implements Runnable{
 	public void onDraw (Canvas canvas){
 		bg.draw(canvas);
 		robot.draw(canvas);
+		combo.draw(canvas);
+		//enemy.draw(canvas);
 	}
 	
 	public void init (){
@@ -48,19 +55,32 @@ public class GameScreen extends View implements Runnable{
 		//criar os objetos do jogo
 		bg = new Background();
 		robot = new PlayerCharacter();
+		//enemy = new Enemy();
+		combo = new Combo();
 		
 		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
 		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();
-		//bg.setLargura((int)(bg.getLargura()* GameParameterSingleton.DISTORTION));
-		//bg.setAltura((int)(bg.getAltura()* GameParameterSingleton.DISTORTION));
 		bg.updateDistortion();
 		
-		robot.setX(100);
+		robot.setX(10);
 		robot.setY(100);
 		robot.updateDistortion();
 		
+		
 	}
 
+	public boolean onTouchEvent(MotionEvent evt){
+		if(evt.getAction()== MotionEvent.ACTION_DOWN){
+			robot.setDirecao(PlayerCharacter.SOBE);
+			return true;
+		}else if(evt.getAction()== MotionEvent.ACTION_UP){
+			robot.setDirecao(PlayerCharacter.DESCE);
+			return true;
+		}
+		return false;
+	}
+	
+	
 	//essa classe é uma thread pois deve se auto desenhar. Controla o loop do jogo
 	@Override
 	public void run() {
