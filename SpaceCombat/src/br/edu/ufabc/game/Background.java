@@ -21,8 +21,8 @@ public class Background {
 	
 	private static final String TAG ="InfiniteBG";
 	
-	//passo em pixels
-	private final int STEP=5;
+	//passo em pixels (velocidade com a qual o BG se move)
+	private final int STEP=10;
 	
 	public Background(){
 		try {
@@ -42,25 +42,22 @@ public class Background {
 	
 	//define como o bg se move
 	public void update(){
-		/*first.left = 0;
-		first.right = largura;
-		first.top  = 0 ;
-		first.bottom = altura;*/
+		
 		int passoDistorcido = (int) (STEP * GameParameterSingleton.DISTORTION);
 		
 		first.left -= passoDistorcido;
 		first.right -= passoDistorcido;
-		first.top  = 0 ;
-		first.bottom = altura;
+		//first.top  = 0 ;
+		//first.bottom = altura;
 		
 		sec.left -= passoDistorcido;
 		sec.right -= passoDistorcido;
-		sec.top  = 0;
-		sec.bottom = altura;
+		//sec.top  = 0;
+		//sec.bottom = altura;
 		
 		if (first.right <= 0){
-			first.right = sec.right;
-			first.left = sec.right + largura;
+			first.right = sec.right+largura;
+			first.left = sec.right;
 			
 		}
 		
@@ -80,8 +77,9 @@ public class Background {
 	}
 	
 	public void updateDistortion(){
-		setLargura((int) (getLargura() * GameParameterSingleton.DISTORTION));
-		setAltura((int) (getAltura() * GameParameterSingleton.DISTORTION));
+		setLargura((int) (this.getLargura() * GameParameterSingleton.DISTORTION));
+		setAltura( (int) (this.getAltura() * GameParameterSingleton.DISTORTION));
+		
 		first.left = 0;
 		first.top  = 0 ;
 		first.right = largura;

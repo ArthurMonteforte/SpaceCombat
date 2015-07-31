@@ -27,7 +27,6 @@ public class GameScreen extends View implements Runnable{
 
 	public void uptade(){
 		if (update){
-			//i++;
 			bg.update();
 		}
 	
@@ -35,12 +34,10 @@ public class GameScreen extends View implements Runnable{
 		
 	//metodo CallBack, o android chama sozinho
 	public void onDraw (Canvas canvas){
-		//canvas.drawText("Valor do i = " + i, 50, 100, paint);
 		bg.draw(canvas);
 	}
 	
 	public void init (){
-		//i=0;
 		update = true;
 		paint = new Paint ();
 		paint.setColor(Color.BLACK);

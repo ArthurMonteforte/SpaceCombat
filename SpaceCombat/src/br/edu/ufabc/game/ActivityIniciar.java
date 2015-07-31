@@ -36,7 +36,6 @@ public class ActivityIniciar extends Activity{
 		
 		gameScreen = new GameScreen(this);
 		
-		
 		setContentView(gameScreen);
 		Thread t = new Thread(gameScreen); 
 		t.start();
@@ -51,7 +50,6 @@ public class ActivityIniciar extends Activity{
 		GameParameterSingleton.ORIENTATION = GameParameterSingleton.PORTRAIT;
 		GameParameterSingleton.SCREEN_HEIGHT = size.y;
 		GameParameterSingleton.SCREEN_WIDTH = size.x;
-		
 		GameParameterSingleton.assetManager = getAssets();
 		
 		//tira titulo (deixa jogo fullscree)
