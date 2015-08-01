@@ -7,6 +7,12 @@ import android.graphics.Canvas;
 public abstract class GameObjects {
 
 	private int x, y, width, height;
+	private BoundingBox boundingBox;
+	
+	public GameObjects(){
+		boundingBox = new BoundingBox();
+	}
+	
 	public abstract void draw(Canvas canvas);
 	public abstract void update();
 	
@@ -46,8 +52,13 @@ public abstract class GameObjects {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	
-	
+	public BoundingBox getBoundingBox() {
+		return boundingBox;
+	}
+	public void setBoundingBox(BoundingBox boundingBox) {
+		this.boundingBox = boundingBox;
+	}
+		
 	abstract void move();
 	
 	

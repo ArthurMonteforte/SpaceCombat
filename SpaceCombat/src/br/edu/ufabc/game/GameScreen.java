@@ -66,6 +66,12 @@ public class GameScreen extends View implements Runnable{
 		robot.setY(100);
 		robot.updateDistortion();
 		
+		// ajustando boundingBox do robô
+		robot.getBoundingBox().setWidth(robot.getWidth());
+		robot.getBoundingBox().setHeight(robot.getHeight());
+		robot.getBoundingBox().setX(robot.getX());
+		robot.getBoundingBox().setY(robot.getY());
+		
 		
 	}
 

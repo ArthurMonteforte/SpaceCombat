@@ -5,6 +5,8 @@ import java.io.InputStream;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class PlayerCharacter extends GameObjects {
@@ -25,6 +27,8 @@ public class PlayerCharacter extends GameObjects {
 	private static final int PASSO_DESCE=6;
 	private static final int PASSO_SOBE=3;
 	
+	private Paint paint;
+	
 	
 	public PlayerCharacter() {
 		try {
@@ -41,6 +45,9 @@ public class PlayerCharacter extends GameObjects {
 			src =new Rect(0,0, getWidth(), getHeight());
 			dst = new Rect();
 			
+			paint = new Paint();
+			paint.setColor(Color.WHITE);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -48,16 +55,25 @@ public class PlayerCharacter extends GameObjects {
 	
 	@Override
 	public void draw(Canvas canvas) {
+		canvas.drawRect(getBoundingBox().getX(),
+				getBoundingBox().getY(),
+				getBoundingBox().getX() + getBoundingBox().getWidth(),
+				getBoundingBox().getY() + getBoundingBox().getHeight(),
+				paint);
+		
 		canvas.drawBitmap(figura, src, dst, null);
+		
 	}
 
 	@Override
 	public void update() {
 		
 		if (direcao == DESCE){
-			setY(getY()+ PASSO_DESCE);
+			setY(getY() + (int) (PASSO_DESCE*GameParameterSingleton.DISTORTION));
+			getBoundingBox().setY(getBoundingBox().getY() + (int) (PASSO_DESCE*GameParameterSingleton.DISTORTION));
 		}else{
-			setY(getY()-PASSO_SOBE);
+			setY(getY() - (int) (PASSO_SOBE*GameParameterSingleton.DISTORTION));
+			getBoundingBox().setY(getBoundingBox().getY() - (int) (PASSO_SOBE*GameParameterSingleton.DISTORTION));
 		}
 		
 		
