@@ -3,7 +3,7 @@ package br.edu.ufabc.game;
 import android.graphics.Canvas;
 
 public class Combo {
-	private Enemy enemy;
+	public Enemy enemy;
 	private boolean valid;
 	int x,y;
 	
@@ -27,4 +27,5 @@ public class Combo {
 		enemy.draw(canvas);
 		
 	}
+	
 }

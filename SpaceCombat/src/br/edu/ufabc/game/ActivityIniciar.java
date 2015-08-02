@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,11 +17,14 @@ import android.widget.ViewAnimator;
 public class ActivityIniciar extends Activity{
 
 	private GameScreen gameScreen;
+	public MediaPlayer mp;
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tela_iniciar);
 		ajustaConteudo();
+		
+		mp = MediaPlayer.create(this, R.raw.terran_theme);
 	}
 	
 	public void ajustaConteudo(){
@@ -39,6 +43,7 @@ public class ActivityIniciar extends Activity{
 		setContentView(gameScreen);
 		Thread t = new Thread(gameScreen); 
 		t.start();
+		mp.start();	
 		
 	}
 	

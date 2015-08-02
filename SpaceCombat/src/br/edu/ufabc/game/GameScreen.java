@@ -1,7 +1,7 @@
 package br.edu.ufabc.game;
 
+
 import android.content.Context;
-import android.content.res.Resources.Theme;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,16 +11,16 @@ import android.view.View;
 
 //classe que desenha a dela do jogo...é a view propriamente dita.
 //Deve ser uma thread pois deve se auto desenhar.
-public class GameScreen extends View implements Runnable{
+public class GameScreen extends View implements Runnable {
 
 	private boolean update; //variavel que controla o update
-	private int i;
 	private Paint paint; //necessario para desenhar.
 	private static final String TAG = "GameScreen";
 	private Background bg;
 	private PlayerCharacter robot;
-	private Enemy enemy;
 	private Combo combo; //desenha um combo de inimigos
+	private EnemyArmy enemyArmy;
+	public int tempo = 0;
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -29,11 +29,16 @@ public class GameScreen extends View implements Runnable{
 	
 	}
 
-	public void uptade(){
+	public void update(){
 		if (update){
+			if(tempo%1000 == 0){
+				//int i = 1 + (int)(Math.random() * ((20 - 1) + 1));
+				enemyArmy.createEnemy();
+			}
 			bg.update();
 			robot.update();
 			combo.update();
+			enemyArmy.update();
 			//enemy.update();
 		}
 	
@@ -44,6 +49,7 @@ public class GameScreen extends View implements Runnable{
 		bg.draw(canvas);
 		robot.draw(canvas);
 		combo.draw(canvas);
+		enemyArmy.draw(canvas);
 		//enemy.draw(canvas);
 	}
 	
@@ -57,6 +63,7 @@ public class GameScreen extends View implements Runnable{
 		robot = new PlayerCharacter();
 		//enemy = new Enemy();
 		combo = new Combo();
+		enemyArmy = new EnemyArmy();
 		
 		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
 		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();
@@ -92,8 +99,9 @@ public class GameScreen extends View implements Runnable{
 	public void run() {
 		while (true){
 			try {
-				uptade();
+				update();
 				postInvalidate();//invalida a view atual e forcar a invocacao do DRAW
+				tempo += 50;
 				Thread.sleep(50); //regula os frames
 			} catch (Exception e) {
 				Log.d(TAG, "Erro no loop");
