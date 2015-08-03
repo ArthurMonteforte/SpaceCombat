@@ -34,7 +34,7 @@ public class ActivityIniciar extends Activity{
 	}
 	
 	public void botaoComecar(View view){
-		// Ao clicar no bot„o ComeÁar, inicia-se a view GameScreen (custom view do jogo)
+		// Ao clicar no bot√£o Come√ßar, inicia-se a view GameScreen (custom view do jogo)
 		
 		this.setupParamters();//configura os parametros do jogo
 		
@@ -62,6 +62,11 @@ public class ActivityIniciar extends Activity{
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
+	}
+	
+	// desabilitando o bot√£o back
+	@Override
+	public void onBackPressed() {
 	}
 	
 }
