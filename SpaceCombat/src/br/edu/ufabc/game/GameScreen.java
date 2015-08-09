@@ -20,6 +20,7 @@ public class GameScreen extends View implements Runnable {
 	private PlayerCharacter robot;
 	private Combo combo; //desenha um combo de inimigos
 	private EnemyArmy enemyArmy;
+	private BatAlien bat;
 	public int tempo = 0;
 	
 	public GameScreen(Context context) {
@@ -39,6 +40,7 @@ public class GameScreen extends View implements Runnable {
 			robot.update();
 			combo.update();
 			enemyArmy.update();
+			bat.update();
 			//enemy.update();
 		}
 	
@@ -50,6 +52,7 @@ public class GameScreen extends View implements Runnable {
 		robot.draw(canvas);
 		combo.draw(canvas);
 		enemyArmy.draw(canvas);
+		bat.draw(canvas);
 		//enemy.draw(canvas);
 	}
 	
@@ -64,6 +67,7 @@ public class GameScreen extends View implements Runnable {
 		//enemy = new Enemy();
 		combo = new Combo();
 		enemyArmy = new EnemyArmy();
+		bat = new BatAlien();
 		
 		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
 		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();

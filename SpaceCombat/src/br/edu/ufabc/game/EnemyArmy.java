@@ -1,12 +1,12 @@
 package br.edu.ufabc.game;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import android.graphics.Canvas;
 
 public class EnemyArmy {
 	public Vector<Combo> army;
+
 	
 	public EnemyArmy(){
 		army = new Vector<Combo>();
@@ -24,9 +24,7 @@ public class EnemyArmy {
 			item.update();
 		}
 			
-	}
-
-	
+	}	
 	
 	public void draw(Canvas canvas){
 		for(int i = 0; i <  army.size(); i++){
