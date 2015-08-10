@@ -21,6 +21,7 @@ public class GameScreen extends View implements Runnable {
 	private Combo combo; //desenha um combo de inimigos
 	private EnemyArmy enemyArmy;
 	private BatAlien bat;
+	private Projectile projectile;
 	public int tempo = 0;
 	
 	public GameScreen(Context context) {
@@ -41,6 +42,7 @@ public class GameScreen extends View implements Runnable {
 			combo.update();
 			enemyArmy.update();
 			bat.update();
+			projectile.update();
 			//enemy.update();
 		}
 	
@@ -53,6 +55,7 @@ public class GameScreen extends View implements Runnable {
 		combo.draw(canvas);
 		enemyArmy.draw(canvas);
 		bat.draw(canvas);
+		projectile.draw(canvas);
 		//enemy.draw(canvas);
 	}
 	
@@ -76,6 +79,8 @@ public class GameScreen extends View implements Runnable {
 		robot.setX(10);
 		robot.setY(100);
 		robot.updateDistortion();
+		
+		projectile = new Projectile(robot.getX(), robot.getY());
 		
 		// ajustando boundingBox do robô
 		robot.getBoundingBox().setWidth(robot.getWidth());
