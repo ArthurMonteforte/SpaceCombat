@@ -39,6 +39,22 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void botaoRanking(View view){
+		//setContentView(R.layout.tela_iniciar);
+		
+		String msg = "2";
+
+		Bundle param = new Bundle();
+		param.putString("msg", msg);
+
+		Intent intent = new Intent(this, Ranking.class);
+
+		intent.putExtras(param);
+
+		startActivity(intent);
+	}
+
+	
 	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

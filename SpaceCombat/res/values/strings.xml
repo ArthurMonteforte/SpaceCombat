@@ -14,5 +14,7 @@
     <string name="tituloPontuacao">Pontuação:</string>
     <string name="pontuacao">0</string>
     <string name="btnOk">Ok</string>
+    <string name="tituloRanking">Ranking</string>
+    <string name="refresh">refresh</string>
 
 </resources>
