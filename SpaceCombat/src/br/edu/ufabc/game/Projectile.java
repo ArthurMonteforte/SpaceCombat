@@ -74,11 +74,11 @@ public class Projectile extends GameObjects{
 	@Override
 	public void draw(Canvas canvas) {
 		// TODO Auto-generated method stub
-		canvas.drawRect(getBoundingBox().getX(),
-				getBoundingBox().getY(),
-				getBoundingBox().getX() + getBoundingBox().getWidth(),
-				getBoundingBox().getY() + getBoundingBox().getHeight(),
-				paint);
+		//canvas.drawRect(getBoundingBox().getX(),
+				//getBoundingBox().getY(),
+				//getBoundingBox().getX() + getBoundingBox().getWidth(),
+				//getBoundingBox().getY() + getBoundingBox().getHeight(),
+				//paint);
 		canvas.drawBitmap(figura, src, dst, null);
 	}
 

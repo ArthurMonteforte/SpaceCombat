@@ -13,6 +13,8 @@ public class GameParameterSingleton {
 	public static int SCREEN_HEIGHT;
 	public static float DISTORTION = 1.0f;
 	
+	public static int PONTOS;
+	
 	//quem gerencia os assets (figuras) do jogo
 	public static AssetManager assetManager;
 

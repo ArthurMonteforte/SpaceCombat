@@ -23,6 +23,8 @@ public class ActivityIniciar extends Activity{
 		ajustaConteudo();
 		
 		mp = MediaPlayer.create(this, R.raw.terran_theme);
+		
+		
 	}
 	
 	public void ajustaConteudo(){

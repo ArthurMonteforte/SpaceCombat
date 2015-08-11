@@ -29,6 +29,8 @@ public class PlayerCharacter extends GameObjects {
 	
 	private Paint paint;
 	
+	int marcado = 0;
+	
 	
 	public PlayerCharacter() {
 		try {
@@ -55,11 +57,11 @@ public class PlayerCharacter extends GameObjects {
 	
 	@Override
 	public void draw(Canvas canvas) {
-		canvas.drawRect(getBoundingBox().getX(),
-				getBoundingBox().getY(),
-				getBoundingBox().getX() + getBoundingBox().getWidth(),
-				getBoundingBox().getY() + getBoundingBox().getHeight(),
-				paint);
+		//canvas.drawRect(getBoundingBox().getX(),
+				//getBoundingBox().getY(),
+				//getBoundingBox().getX() + getBoundingBox().getWidth(),
+				//getBoundingBox().getY() + getBoundingBox().getHeight(),
+				//paint);
 		
 		canvas.drawBitmap(figura, src, dst, null);
 		
@@ -105,6 +107,14 @@ public class PlayerCharacter extends GameObjects {
 	void move() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getMarcado() {
+		return marcado;
+	}
+
+	public void setMarcado(int marcado) {
+		this.marcado = marcado;
 	}
 
 }

@@ -2,12 +2,17 @@ package br.edu.ufabc.game;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 //classe que desenha a dela do jogo...é a view propriamente dita.
 //Deve ser uma thread pois deve se auto desenhar.
@@ -18,12 +23,11 @@ public class GameScreen extends View implements Runnable {
 	private static final String TAG = "GameScreen";
 	private Background bg;
 	private PlayerCharacter robot;
-	private Combo combo; //desenha um combo de inimigos
 	private EnemyArmy enemyArmy;
-	private BatAlien bat;
+	private BatAlienArmy baArmy;
 	private Projectiles projectiles;
 	public int tempo = 0;
-	private GameParameterSingleton gps;
+	
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -35,8 +39,14 @@ public class GameScreen extends View implements Runnable {
 	public void update(){
 		if (update){
 			if(tempo%1000 == 0){
+				int random = 0 + (int)(Math.random()*100);
+				if(random <= 30){
+					baArmy.createBatAlienEnemy();
+				}
+				else{
+					enemyArmy.createEnemy();
+				}
 				//int i = 1 + (int)(Math.random() * ((20 - 1) + 1));
-				enemyArmy.createEnemy();
 				projectiles.createProjectile(robot.getBoundingBox().getX() + robot.getBoundingBox().getWidth(),
 						robot.getY());
 			}
@@ -45,17 +55,50 @@ public class GameScreen extends View implements Runnable {
 				for(int j = 0; j < enemyArmy.army.size(); j++){
 					if(GameParameterSingleton.detectColision(projectiles.projectiles.get(i),
 							enemyArmy.army.get(j))){
-						projectiles.projectiles.get(i).setMarcado(1);;
-						enemyArmy.army.get(j).setMarcado(1);;
+						projectiles.projectiles.get(i).setMarcado(1);
+						enemyArmy.army.get(j).setMarcado(1);
+						GameParameterSingleton.PONTOS += 10;
+						
 					}
 				}
 			}
+			
+			for(int i = 0; i < projectiles.projectiles.size(); i++){
+				for(int j = 0; j < baArmy.BAarmy.size(); j++){
+					if(GameParameterSingleton.detectColision(projectiles.projectiles.get(i),
+							baArmy.BAarmy.get(j))){
+						projectiles.projectiles.get(i).setMarcado(1);
+						baArmy.BAarmy.get(j).setMarcado();
+						GameParameterSingleton.PONTOS += 50;
+					}
+				}
+			}
+			
+			for(int j = 0; j < baArmy.BAarmy.size(); j++){
+				if(GameParameterSingleton.detectColision(baArmy.BAarmy.get(j),
+						robot)){
+					robot.setMarcado(1);
+					baArmy.BAarmy.get(j).setMarcado();
+				}
+			}
+			
+			for(int j = 0; j < enemyArmy.army.size(); j++){
+				if(GameParameterSingleton.detectColision(enemyArmy.army.get(j),
+						robot)){
+					robot.setMarcado(1);
+					enemyArmy.army.get(j).setMarcado(1);
+				}
+			}
+			
+			if(robot.getMarcado() == 1){
+			}
+			
+			
 			bg.update();
 			robot.update();
-			combo.update();
 			enemyArmy.update();
-			bat.update();
 			projectiles.update();
+			baArmy.update();
 			//enemy.update();
 		}
 	
@@ -65,25 +108,26 @@ public class GameScreen extends View implements Runnable {
 	public void onDraw (Canvas canvas){
 		bg.draw(canvas);
 		robot.draw(canvas);
-		combo.draw(canvas);
 		enemyArmy.draw(canvas);
-		bat.draw(canvas);
 		projectiles.draw(canvas);
+		baArmy.draw(canvas);
+		canvas.drawText("Pontos: " + GameParameterSingleton.PONTOS, GameParameterSingleton.SCREEN_WIDTH - 100, 50, paint);
 		//enemy.draw(canvas);
 	}
 	
 	public void init (){
 		update = true;
 		paint = new Paint ();
-		paint.setColor(Color.BLACK);
+		paint.setColor(Color.WHITE);
+		
+		GameParameterSingleton.PONTOS = 0;
 		
 		//criar os objetos do jogo
 		bg = new Background();
 		robot = new PlayerCharacter();
 		//enemy = new Enemy();
-		combo = new Combo();
 		enemyArmy = new EnemyArmy();
-		bat = new BatAlien();
+		baArmy = new BatAlienArmy();
 		
 		//define fator de distorcao, pois cada tela de celular e diferente, ajusta o tamanho do app
 		GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.SCREEN_HEIGHT / bg.getAltura();
@@ -99,12 +143,10 @@ public class GameScreen extends View implements Runnable {
 		robot.getBoundingBox().setWidth(robot.getWidth());
 		robot.getBoundingBox().setHeight(robot.getHeight());
 		robot.getBoundingBox().setX(robot.getX());
-		robot.getBoundingBox().setY(robot.getY());
-		
-		gps = new GameParameterSingleton(); 
-		
+		robot.getBoundingBox().setY(robot.getY());		
 		
 	}
+	
 
 	public boolean onTouchEvent(MotionEvent evt){
 		if(evt.getAction()== MotionEvent.ACTION_DOWN){
