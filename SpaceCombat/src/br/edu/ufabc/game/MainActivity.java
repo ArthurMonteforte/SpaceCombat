@@ -55,6 +55,11 @@ public class MainActivity extends Activity {
 	}
 
 	
+	public void botaoSair(View view){
+		Intent intent1 = new Intent(Intent.ACTION_MAIN); 
+		finish();
+	}
+
 	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -73,28 +78,28 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}*/
-	/*
+	
 	public void onStart(){
-		
+		super.onStart();
 	}
 	
-	public void onStop(){
-			
-	}
+    protected void onStop(){
+    	super.onStop();
+    }
 	
 	public void onPause(){
-		
+		super.onPause();
 	}
 	
 	public void onResume(){
-		
+		super.onResume();
 	}
 	
 	public void onDestroy(){
-		
+		super.onDestroy();
 	}
 	
 	public void onRestart(){
-		
-	}*/
+		super.onRestart();
+	}
 }

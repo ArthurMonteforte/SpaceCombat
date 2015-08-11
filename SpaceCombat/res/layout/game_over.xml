@@ -69,6 +69,16 @@
             android:layout_marginTop="46dp"
             android:onClick="botaoOk"
             android:text="@string/btnOk" />
+
+        <TextView
+            android:id="@+id/txtNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pontuacao"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="19dp"
+            android:text="@string/txtNome"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
         
     </RelativeLayout>
     

@@ -61,6 +61,7 @@
             android:layout_below="@+id/btnRanking"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:onClick="botaoSair"
             android:text="@string/btnSair" />
 
     </RelativeLayout>

@@ -3,19 +3,17 @@ package br.edu.ufabc.game;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ViewAnimator;
+import android.widget.EditText;
 
 public class ActivityIniciar extends Activity{
 
+	
+	
 	private GameScreen gameScreen;
 	public MediaPlayer mp;
 	
@@ -31,6 +29,17 @@ public class ActivityIniciar extends Activity{
 		// Inicia a tela Iniciar
 		Intent intent = getIntent();
 		Bundle param = intent.getExtras();
+	}
+	
+	public void botaoTeste(View view){
+		EditText txtApelido = (EditText)findViewById(R.id.txtApelido);
+		String msg = txtApelido.getText().toString();
+		Bundle param2 = new Bundle();
+		param2.putString("msg",msg);
+		
+		Intent intent = new Intent(this, ActivityGameOver.class);
+		intent.putExtras(param2);
+		startActivity(intent);
 	}
 	
 	public void botaoComecar(View view){
@@ -68,5 +77,8 @@ public class ActivityIniciar extends Activity{
 	@Override
 	public void onBackPressed() {
 	}
+	
+
+
 	
 }

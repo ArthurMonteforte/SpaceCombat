@@ -62,7 +62,14 @@
             android:onClick="botaoComecar"
             android:text="@string/btnComecar" />
 
-        
+        <Button
+            android:id="@+id/btnTeste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnComecar"
+            android:layout_centerHorizontal="true"
+            android:onClick="botaoTeste"
+            android:text="TesteGameOver" />
         
     </RelativeLayout>
     

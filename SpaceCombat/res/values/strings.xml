@@ -16,5 +16,6 @@
     <string name="btnOk">Ok</string>
     <string name="tituloRanking">Ranking</string>
     <string name="refresh">refresh</string>
+    <string name="txtNome">Apelido</string>
 
 </resources>
