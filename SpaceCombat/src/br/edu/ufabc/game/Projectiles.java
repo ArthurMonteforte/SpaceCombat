@@ -29,7 +29,13 @@ public class Projectiles {
     
     public void draw(Canvas canvas){
         for(int i = 0; i <  projectiles.size(); i++){
+        	if((projectiles.get(i).getX() > GameParameterSingleton.SCREEN_WIDTH)
+        			|| projectiles.get(i).getMarcado() == 1){
+        		projectiles.remove(i);
+        	}
+        	else{
             projectiles.get(i).draw(canvas);
+        	}
         }
     }
 }

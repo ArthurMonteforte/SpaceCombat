@@ -23,6 +23,7 @@ public class GameScreen extends View implements Runnable {
 	private BatAlien bat;
 	private Projectiles projectiles;
 	public int tempo = 0;
+	private GameParameterSingleton gps;
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -38,6 +39,16 @@ public class GameScreen extends View implements Runnable {
 				enemyArmy.createEnemy();
 				projectiles.createProjectile(robot.getBoundingBox().getX() + robot.getBoundingBox().getWidth(),
 						robot.getY());
+			}
+			
+			for(int i = 0; i < projectiles.projectiles.size(); i++){
+				for(int j = 0; j < enemyArmy.army.size(); j++){
+					if(GameParameterSingleton.detectColision(projectiles.projectiles.get(i),
+							enemyArmy.army.get(j))){
+						projectiles.projectiles.get(i).setMarcado(1);;
+						enemyArmy.army.get(j).setMarcado(1);;
+					}
+				}
 			}
 			bg.update();
 			robot.update();
@@ -89,6 +100,8 @@ public class GameScreen extends View implements Runnable {
 		robot.getBoundingBox().setHeight(robot.getHeight());
 		robot.getBoundingBox().setX(robot.getX());
 		robot.getBoundingBox().setY(robot.getY());
+		
+		gps = new GameParameterSingleton(); 
 		
 		
 	}

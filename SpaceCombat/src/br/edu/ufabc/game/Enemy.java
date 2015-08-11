@@ -24,6 +24,32 @@ public class Enemy extends GameObjects{
 	
 	private Paint paint;
 	
+	int marcado = 0;
+	
+	public int getMarcado() {
+		return marcado;
+	}
+
+	public void setMarcado(int marcado) {
+		this.marcado = marcado;
+	}
+
+	public int getSpriteWidth() {
+		return spriteWidth;
+	}
+
+	public void setSpriteWidth(int spriteWidth) {
+		this.spriteWidth = spriteWidth;
+	}
+
+	public int getSpriteHeight() {
+		return spriteHeight;
+	}
+
+	public void setSpriteHeight(int spriteHeight) {
+		this.spriteHeight = spriteHeight;
+	}
+
 	public Enemy() {
 		try {
 			InputStream is =  GameParameterSingleton.assetManager.open("enemy.png");

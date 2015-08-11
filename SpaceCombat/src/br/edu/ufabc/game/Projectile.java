@@ -5,6 +5,8 @@ import java.io.InputStream;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class Projectile extends GameObjects{
@@ -20,6 +22,18 @@ public class Projectile extends GameObjects{
 	private static final String TAG="Projectile";
 	private final int STEP=3;
 	
+	private Paint paint;
+	
+	int marcado = 0;
+	
+	public int getMarcado() {
+		return marcado;
+	}
+
+	public void setMarcado(int marcado) {
+		this.marcado = marcado;
+	}
+
 	public Projectile(int x, int y){
 		try {
 			InputStream is =  GameParameterSingleton.assetManager.open("Projectile.png");
@@ -34,6 +48,18 @@ public class Projectile extends GameObjects{
 		
 			src =new Rect(0,0, getWidth(), getHeight());
 			dst = new Rect();
+			
+			paint = new Paint();
+			paint.setColor(Color.WHITE);
+			
+			this.setX(x);
+			this.setY(y);
+			this.updateDistortion();
+			
+			this.getBoundingBox().setWidth(this.getWidth());
+			this.getBoundingBox().setHeight(this.getHeight());
+			getBoundingBox().setX(this.getX());
+			getBoundingBox().setY(this.getY());
 		
 		}
 		catch (Exception e) {
@@ -48,6 +74,11 @@ public class Projectile extends GameObjects{
 	@Override
 	public void draw(Canvas canvas) {
 		// TODO Auto-generated method stub
+		canvas.drawRect(getBoundingBox().getX(),
+				getBoundingBox().getY(),
+				getBoundingBox().getX() + getBoundingBox().getWidth(),
+				getBoundingBox().getY() + getBoundingBox().getHeight(),
+				paint);
 		canvas.drawBitmap(figura, src, dst, null);
 	}
 
@@ -56,6 +87,7 @@ public class Projectile extends GameObjects{
 		// TODO Auto-generated method stub
 		int passoDistorcido = (int) (STEP * GameParameterSingleton.DISTORTION);
 		setX(getX()+passoDistorcido);
+		getBoundingBox().setX(this.getX());
 		
 		src.top=0;
 		src.bottom = spriteHeight;
