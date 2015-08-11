@@ -21,7 +21,7 @@ public class GameScreen extends View implements Runnable {
 	private Combo combo; //desenha um combo de inimigos
 	private EnemyArmy enemyArmy;
 	private BatAlien bat;
-	private Projectile projectile;
+	private Projectiles projectiles;
 	public int tempo = 0;
 	
 	public GameScreen(Context context) {
@@ -36,13 +36,15 @@ public class GameScreen extends View implements Runnable {
 			if(tempo%1000 == 0){
 				//int i = 1 + (int)(Math.random() * ((20 - 1) + 1));
 				enemyArmy.createEnemy();
+				projectiles.createProjectile(robot.getBoundingBox().getX() + robot.getBoundingBox().getWidth(),
+						robot.getY());
 			}
 			bg.update();
 			robot.update();
 			combo.update();
 			enemyArmy.update();
 			bat.update();
-			projectile.update();
+			projectiles.update();
 			//enemy.update();
 		}
 	
@@ -55,7 +57,7 @@ public class GameScreen extends View implements Runnable {
 		combo.draw(canvas);
 		enemyArmy.draw(canvas);
 		bat.draw(canvas);
-		projectile.draw(canvas);
+		projectiles.draw(canvas);
 		//enemy.draw(canvas);
 	}
 	
@@ -80,7 +82,7 @@ public class GameScreen extends View implements Runnable {
 		robot.setY(100);
 		robot.updateDistortion();
 		
-		projectile = new Projectile(robot.getX(), robot.getY());
+		projectiles = new Projectiles();
 		
 		// ajustando boundingBox do robô
 		robot.getBoundingBox().setWidth(robot.getWidth());
