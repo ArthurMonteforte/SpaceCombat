@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class ActivityIniciar extends Activity{
 
-	Handler handler;
+	//private Handler handler;
 	
 	private GameScreen gameScreen;
 	public MediaPlayer mp;
@@ -23,6 +23,17 @@ public class ActivityIniciar extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tela_iniciar);
 		ajustaConteudo();
+		
+		/*handler = new Handler(){
+			public void handleMessage(Message msg){
+				super.handleMessage(msg);
+				if(msg.what == 0){
+					mostraViewFinish();
+				}
+			}
+		};
+		
+		gameScreen.setHandler(handler);*/
 		
 		mp = MediaPlayer.create(this, R.raw.terran_theme);
 		
@@ -88,6 +99,11 @@ public class ActivityIniciar extends Activity{
 		
 	}
 	
+	
+	/*public void mostraViewFinish(){
+		setContentView(R.layout.game_over);
+	}
+	*/
 	// desabilitando o botão back
 	@Override
 	public void onBackPressed() {
