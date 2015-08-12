@@ -28,6 +28,7 @@ public class ActivityIniciar extends Activity{
 			public void handleMessage(Message msg){
 				super.handleMessage(msg);
 				if(msg.what == 100){
+					mp.stop();
 					setContentView(R.layout.game_over);
 				}
 			}
