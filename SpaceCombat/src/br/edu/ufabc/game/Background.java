@@ -48,13 +48,9 @@ public class Background {
 		//decrementa pouco em pouco pra esquerda
 		first.left -= passoDistorcido;
 		first.right -= passoDistorcido;
-		//first.top  = 0 ;
-		//first.bottom = altura;
 		
 		sec.left -= passoDistorcido;
 		sec.right -= passoDistorcido;
-		//sec.top  = 0;
-		//sec.bottom = altura;
 		
 		if (first.right <= 0){
 			first.right = sec.right+largura;
@@ -71,7 +67,6 @@ public class Background {
 	
 	//precisa ter um canvas pois desenha nele
 	public void draw(Canvas canvas){
-		//System.out.println("DESENHA");
 		canvas.drawBitmap(figura, src, first, null);
 		canvas.drawBitmap(figura, src, sec, null);
 		

@@ -20,6 +20,14 @@
     <string name="btnInstrucoes">Instruções do Jogo</string>
     <string name="tituloInstrucoes">Instruções do Jogo</string>
     <string name="txtInstrucoes">Clique no ícone para atualizar</string>
-    <string name="txtInst">Clique no ícone para atualizar</string>
+    <string name="txtInst">Selecione o idioma</string>
+    <string name="btnSave">Salvar</string>
+    <string name="novoApelido">Apelido</string>
+    <string name="novoTxtPont">Pontuação:</string>
+    <string name="novoScore">0</string>
+    <string name="novoSave">Salvar</string>
+    <string name="btnVoltar">Voltar</string>
+    <string name="btnPort">Português</string>
+    <string name="btnIng">English</string>
 
 </resources>

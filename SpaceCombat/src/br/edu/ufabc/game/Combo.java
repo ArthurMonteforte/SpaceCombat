@@ -11,12 +11,7 @@ public class Combo {
 		valid = true;
 		
 		enemy = new Enemy();
-		//enemy.setX(GameParameterSingleton.SCREEN_WIDTH);
-		//y=1 + (int)(Math.random() * GameParameterSingleton.SCREEN_HEIGHT);
-		//enemy.setY(y);
-		//enemy.updateDistortion();
-		
-		
+				
 	}
 	
 	public void update(){

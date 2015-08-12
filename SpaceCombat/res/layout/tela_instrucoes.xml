@@ -32,36 +32,55 @@
         android:background="#ffffff"
         android:orientation="horizontal" >
 
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="back"
+            android:text="@string/btnVoltar" />
+
         <TextView
             android:id="@+id/tituloInstrucoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
             android:text="@string/tituloInstrucoes"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-         <ImageView
-             android:id="@+id/refresh"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/tituloInstrucoes"
-             android:contentDescription="@string/refresh"
-             android:src="@android:drawable/ic_menu_rotate" />
+        <Button
+            android:id="@+id/btnIng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnPort"
+            android:layout_alignBottom="@+id/btnPort"
+            android:layout_toLeftOf="@+id/btnBack"
+            android:onClick="clickIng"
+            android:text="@string/btnIng" />
 
-         <TextView
-             android:id="@+id/txtInst"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/refresh"
-             android:layout_marginTop="18dp"
-             android:text="@string/txtInst" />
-                
+        <Button
+            android:id="@+id/btnPort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tituloInstrucoes"
+            android:layout_marginTop="18dp"
+            android:layout_toLeftOf="@+id/btnIng"
+            android:onClick="clickPort"
+            android:text="@string/btnPort" />
+
+        <TextView
+            android:id="@+id/txtInst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/btnIng"
+            android:layout_marginTop="14dp"
+            android:text="@string/txtInst" />
+
     </RelativeLayout>
-                
-
     
     <LinearLayout
         android:id="@+id/mainFooter"

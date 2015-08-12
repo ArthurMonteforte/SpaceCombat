@@ -24,6 +24,7 @@ public class Ranking extends Activity{
 		setContentView(R.layout.ranking);
 		ajustaConteudo();
 		rankingBD = new RankingBD(this);
+
 	}
 
 	public void ajustaConteudo(){
@@ -32,28 +33,7 @@ public class Ranking extends Activity{
 		Bundle param = intent.getExtras();
 	}
 	
-	public void novoScore(View view){
-		String name;
-		int score;
-		
-		EditText txtName = (EditText)findViewById(R.id.txtApelido);
-		
-		name = txtName.getText().toString();
-		score = GameParameterSingleton.PONTOS;
-		
-		SQLiteDatabase db = rankingBD.getWritableDatabase();
-		
-		ContentValues cv = new ContentValues();
-		cv.put("name", name);  
-		cv.put("score", score);
-		
-		db.insert("tblRanking", null, cv);
-		db.close();
-		
-		Toast.makeText(this,"Novo socre adicionado",Toast.LENGTH_SHORT).show();
-		
-	}
-	public void todasTarefas(View view){
+	public void todosScores(View view){
 		setContentView(R.layout.ranking);
 		
 		SQLiteDatabase db = rankingBD.getReadableDatabase();
@@ -75,17 +55,9 @@ public class Ranking extends Activity{
 		
 		arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, resultado);
 		
-		
-		
-		ListView listView = (ListView)findViewById(R.id.listRanking);
-		listView.setAdapter(arrayAdapter);
-
-		
 		db.close();
-		
-		//TextView txtTodasTarefas = (TextView)findViewById(R.id.txtTarefas);
-		//txtTodasTarefas.setText(resultado);
 	}
+
 	public void voltar(View view){
 		setContentView(R.layout.activity_main);
 		

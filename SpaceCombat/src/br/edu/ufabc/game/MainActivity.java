@@ -4,29 +4,29 @@ package br.edu.ufabc.game;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	//private GameScreen gameScreen;
+	RankingBD rankingBD;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		/*gameScreen = new GameScreen(this);
-		
-		setContentView(gameScreen);
-		
-		Thread t = new Thread(gameScreen); */
+		ajustaConteudo();
+	}
+	
+	public void ajustaConteudo(){
+		Intent intent = getIntent();
+		Bundle param = intent.getExtras();
 	}
 	
 	public void botaoIniciar(View view){
-		//setContentView(R.layout.tela_iniciar);
-		
 		String msg = "1";
 
 		Bundle param = new Bundle();
@@ -40,24 +40,34 @@ public class MainActivity extends Activity {
 	}
 
 	public void botaoRanking(View view){
-		//setContentView(R.layout.tela_iniciar);
+		rankingBD = new RankingBD(this);
+		setContentView(R.layout.ranking);
+		// preciso de uma instancia "legível" da minha base
+		SQLiteDatabase db = rankingBD.getReadableDatabase();
 		
-		String msg = "2";
+		Cursor cursor;
+		
+		cursor = db.query("tblRanking", new String[]{"name","score"}, null , null, null, null, "score desc");
 
-		Bundle param = new Bundle();
-		param.putString("msg", msg);
-
-		Intent intent = new Intent(this, Ranking.class);
-
-		intent.putExtras(param);
-
-		startActivity(intent);
+		String resultado="";
+		// há registros no resultado da query?
+		if (cursor.moveToFirst()){
+			
+			// itero sobre estes registros
+			do{
+				resultado += cursor.getInt(1)+" - "+cursor.getString(0)+"\n";
+			} while (cursor.moveToNext());
+		}
+		
+		db.close();
+		
+		TextView txtTodasTarefas = (TextView)findViewById(R.id.txtRanking);
+		txtTodasTarefas.setText(resultado);
+		
 	}
 
 
 	public void botaoInstrucao(View view){
-		//setContentView(R.layout.tela_iniciar);
-		
 		String msg = "1";
 
 		Bundle param = new Bundle();
@@ -71,30 +81,17 @@ public class MainActivity extends Activity {
 	}
 
 	
+	public void voltarInicio(View view){
+		setContentView(R.layout.activity_main);
+	}
+	
 	public void botaoSair(View view){
-		Intent intent1 = new Intent(Intent.ACTION_MAIN); 
-		finish();
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_HOME);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
 	}
 
-	/*@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}*/
-
-	/*@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}*/
-	
 	public void onStart(){
 		super.onStart();
 	}

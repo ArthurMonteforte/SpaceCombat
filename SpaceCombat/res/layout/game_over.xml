@@ -31,55 +31,25 @@
         android:background="#ffffff"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/pontuacao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btnOk"
-            android:layout_alignRight="@+id/gameOver"
-            android:text="@string/pontuacao"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/tituloPontuacao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/btnOk"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:text="@string/tituloPontuacao"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/gameOver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/pontuacao"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="61dp"
-            android:text="@string/gameOver"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
         <Button
             android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tituloPontuacao"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginTop="46dp"
             android:onClick="botaoOk"
             android:text="@string/btnOk" />
 
         <TextView
-            android:id="@+id/txtNome"
+            android:id="@+id/gameOver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pontuacao"
+            android:layout_above="@+id/btnOk"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="19dp"
-            android:text="@string/txtNome"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
+            android:layout_marginBottom="15dp"
+            android:text="@string/gameOver"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
     </RelativeLayout>
     
     <LinearLayout

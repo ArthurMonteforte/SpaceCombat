@@ -31,16 +31,12 @@ import android.widget.Toast;
 
 public class Instructions extends Activity implements OnClickListener{
 	ListView listInst;
-	ImageView refresh;
 	TextView txtInst;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tela_instrucoes);
 		ajustaConteudo();
-		refresh = (ImageView)findViewById(R.id.refresh);
-		refresh.setOnClickListener(this);
-		listInst = (ListView)findViewById(R.id.listRanking);
 		txtInst = (TextView)findViewById(R.id.txtInst);
 	}
 
@@ -50,6 +46,31 @@ public class Instructions extends Activity implements OnClickListener{
 		Bundle param = intent.getExtras();
 	}
 	
+	public void back(View v){
+		String msg = "1";
+
+		Bundle param = new Bundle();
+		param.putString("msg", msg);
+
+		Intent intent = new Intent(this, MainActivity.class);
+
+		intent.putExtras(param);
+
+		startActivity(intent);
+
+	}
+	
+	public void clickPort(View v){
+		ReadData task1 = new ReadData();
+		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/cgvmAHREPm?indent=0"});
+		
+	}
+	
+	public void clickIng(View v){
+		ReadData task1 = new ReadData();
+		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/bPJWkyhAQy?indent=0"});
+		
+	}
 	@Override
 	public void onClick(View v) {
 		ReadData task1 = new ReadData();
@@ -78,15 +99,8 @@ public class Instructions extends Activity implements OnClickListener{
 			
 			for(String url1 : urls){
 				try{
-					/*ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
-					pairs.add(new BasicNameValuePair("txtId", etId.getText().toString()));
-					pairs.add(new BasicNameValuePair("txtName", etName.getText().toString()));
-					pairs.add(new BasicNameValuePair("txtScore", etScore.getText().toString()));
-					*/
-					
 					HttpClient client = new DefaultHttpClient();
 					HttpPost post = new HttpPost(url1);
-					//post.setEntity(new UrlEncodedFormEntity(pairs));
 					
 					HttpResponse response = client.execute(post);
 					is1 = response.getEntity().getContent();
@@ -123,7 +137,6 @@ public class Instructions extends Activity implements OnClickListener{
 					JSONArray jArray = new JSONArray(text);
 					for(int i=0;i<jArray.length();i++){
 						JSONObject jsonData = jArray.getJSONObject(i);
-						//list1.add("#"+jsonData.getString("id")+" - "+jsonData.getString("name")+" - "+jsonData.getString("score"));
 						conteudo =   jsonData.getString("text1")+"\n\n"+jsonData.getString("text2");
 					}
 				} catch (JSONException e) {
@@ -138,9 +151,6 @@ public class Instructions extends Activity implements OnClickListener{
 		@Override
 		protected void onPostExecute(Boolean result){
 			if(result==true){
-				//Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
-				//ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Instructions.this,android.R.layout.simple_list_item_1, list1);
-				//listInst.setAdapter(adapter1);
 				txtInst.setText(conteudo);
 			}
 			else{

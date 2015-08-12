@@ -34,7 +34,6 @@ public class GameScreen extends View implements Runnable {
 	public GameScreen(Context context) {
 		super(context);
 		init();
-		//i=0;
 	
 	}
 	
@@ -52,7 +51,7 @@ public class GameScreen extends View implements Runnable {
 				else{
 					enemyArmy.createEnemy();
 				}
-				//int i = 1 + (int)(Math.random() * ((20 - 1) + 1));
+				
 				projectiles.createProjectile(robot.getBoundingBox().getX() + robot.getBoundingBox().getWidth(),
 						robot.getY());
 			}
@@ -114,7 +113,7 @@ public class GameScreen extends View implements Runnable {
 			enemyArmy.update();
 			projectiles.update();
 			baArmy.update();
-			//enemy.update();
+			
 		}
 	
 	
@@ -130,7 +129,7 @@ public class GameScreen extends View implements Runnable {
 		projectiles.draw(canvas);
 		baArmy.draw(canvas);
 		canvas.drawText("Pontos: " + GameParameterSingleton.PONTOS, GameParameterSingleton.SCREEN_WIDTH - 100, 50, paint);
-		//enemy.draw(canvas);
+		
 	}
 	
 	public void init (){

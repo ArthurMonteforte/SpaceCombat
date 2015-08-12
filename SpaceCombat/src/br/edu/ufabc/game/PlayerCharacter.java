@@ -57,12 +57,6 @@ public class PlayerCharacter extends GameObjects {
 	
 	@Override
 	public void draw(Canvas canvas) {
-		//canvas.drawRect(getBoundingBox().getX(),
-				//getBoundingBox().getY(),
-				//getBoundingBox().getX() + getBoundingBox().getWidth(),
-				//getBoundingBox().getY() + getBoundingBox().getHeight(),
-				//paint);
-		
 		canvas.drawBitmap(figura, src, dst, null);
 		
 	}

@@ -63,12 +63,6 @@ public class BatAlien extends GameObjects {
 
 	@Override
 	public void draw(Canvas canvas) {
-		// TODO Auto-generated method stub
-		/*canvas.drawRect(getBoundingBox().getX(),
-				getBoundingBox().getY(),
-				getBoundingBox().getX() + getBoundingBox().getWidth(),
-				getBoundingBox().getY() + getBoundingBox().getHeight(),
-				paint);*/
 		canvas.drawBitmap(figura, src, dst, null);
 	}
 
@@ -81,7 +75,7 @@ public class BatAlien extends GameObjects {
 		
 		src.top=0;
 		src.bottom = spriteHeight;
-		src.left = currentSprite * spriteWidth; //
+		src.left = currentSprite * spriteWidth; 
 		src.right = src.left  + spriteWidth;
 		
 		dst.top = getY();

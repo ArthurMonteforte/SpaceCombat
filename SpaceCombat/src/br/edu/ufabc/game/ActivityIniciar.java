@@ -19,6 +19,13 @@ public class ActivityIniciar extends Activity{
 	private GameScreen gameScreen;
 	public MediaPlayer mp;
 	
+	
+	EditText txtApelido;
+	String apelido;
+	
+	int score;	
+	String scoreText;
+	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tela_iniciar);
@@ -39,36 +46,29 @@ public class ActivityIniciar extends Activity{
 		
 	}
 	
+	public void botaoOk(View view){
+		score = GameParameterSingleton.PONTOS;
+		scoreText = "" + score;
+		
+		Bundle param = new Bundle();
+		param.putString("msg",apelido);
+		param.putString("msg2",scoreText);
+		Intent intent = new Intent(this, ActivityGameOver.class);
+		intent.putExtras(param);
+		startActivity(intent);	
+	}
+	
 	public void ajustaConteudo(){
 		// Inicia a tela Iniciar
 		Intent intent = getIntent();
 		Bundle param = intent.getExtras();
-		/*handler = new Handler(){
-			public void handleMessage(Message msg){
-				super.handleMessage(msg);
-				
-				if(msg.what==100){
-				
-					setContentView(R.layout.game_over);
-				}
-
-			}
-		};*/
 	}
 	
-	/*public void botaoTeste(View view){
-		EditText txtApelido = (EditText)findViewById(R.id.txtApelido);
-		String msg = txtApelido.getText().toString();
-		Bundle param2 = new Bundle();
-		param2.putString("msg",msg);
-		
-		Intent intent = new Intent(this, Ranking.class);
-		intent.putExtras(param2);
-		startActivity(intent);
-	}*/
 	
 	public void botaoComecar(View view){
 		// Ao clicar no botão Começar, inicia-se a view GameScreen (custom view do jogo)
+		txtApelido = (EditText)findViewById(R.id.txtApelido);
+		apelido = txtApelido.getText().toString();
 		
 		this.setupParamters();//configura os parametros do jogo
 		
@@ -99,11 +99,6 @@ public class ActivityIniciar extends Activity{
 		
 	}
 	
-	
-	/*public void mostraViewFinish(){
-		setContentView(R.layout.game_over);
-	}
-	*/
 	// desabilitando o botão back
 	@Override
 	public void onBackPressed() {

@@ -27,28 +27,60 @@
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="1"
         android:background="#ffffff"
         android:orientation="horizontal" >
+
+        
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="voltarInicio"
+            android:text="@string/btnVoltar" />
+
+        
 
         <TextView
             android:id="@+id/tituloRanking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignBaseline="@+id/btnVoltar"
+            android:layout_alignBottom="@+id/btnVoltar"
             android:layout_centerHorizontal="true"
             android:text="@string/tituloRanking"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ListView
-            android:id="@+id/listRanking"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/tituloRanking" >
-        </ListView>
-                
+        
+        
+
+
+        
     </RelativeLayout>
+    
+    <LinearLayout 
+        android:id="@+id/ranking"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+        
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView
+            	android:id="@+id/txtRanking"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:text="ranking"
+            	android:textAppearance="?android:attr/textAppearanceMedium" />
+        </ScrollView>
+    </LinearLayout>
     
     <LinearLayout
         android:id="@+id/mainFooter"
