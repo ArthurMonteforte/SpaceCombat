@@ -20,7 +20,7 @@ public class BatAlien extends GameObjects {
 	private int currentSprite;
 	
 	private static final String TAG="BatAlien";
-	private final int STEP=2;
+	private final int STEP=3;
 	
 	int marcado = 0;
 	

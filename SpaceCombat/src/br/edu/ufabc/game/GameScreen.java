@@ -24,6 +24,7 @@ public class GameScreen extends View implements Runnable {
 	private BatAlienArmy baArmy;
 	private Projectiles projectiles;
 	public int tempo = 0;
+	private boolean continua = true;
 	
 
 	Handler handler;
@@ -96,9 +97,10 @@ public class GameScreen extends View implements Runnable {
 			}
 			
 			if(robot.getMarcado() == 1){
-				/*Message msg = new Message();
-				msg.what = 0;
-				handler.sendMessage(msg);*/
+				Message msg = new Message();
+				msg.what = 100; // algo do tipo - pegou	
+				handler.sendMessage(msg); // envio a msg a ser tratada
+				continua = false;
 			}
 
 
@@ -179,8 +181,9 @@ public class GameScreen extends View implements Runnable {
 	//essa classe é uma thread pois deve se auto desenhar. Controla o loop do jogo
 	@Override
 	public void run() {
-		while (true){
+		while (continua){
 			try {
+				
 				update();
 				postInvalidate();//invalida a view atual e forcar a invocacao do DRAW
 				tempo += 50;

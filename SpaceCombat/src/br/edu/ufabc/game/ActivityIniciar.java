@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class ActivityIniciar extends Activity{
 
-	//private Handler handler;
+	private Handler handler;
 	
 	private GameScreen gameScreen;
 	public MediaPlayer mp;
@@ -24,16 +24,14 @@ public class ActivityIniciar extends Activity{
 		setContentView(R.layout.tela_iniciar);
 		ajustaConteudo();
 		
-		/*handler = new Handler(){
+		handler = new Handler(){
 			public void handleMessage(Message msg){
 				super.handleMessage(msg);
-				if(msg.what == 0){
-					mostraViewFinish();
+				if(msg.what == 100){
+					setContentView(R.layout.game_over);
 				}
 			}
 		};
-		
-		gameScreen.setHandler(handler);*/
 		
 		mp = MediaPlayer.create(this, R.raw.terran_theme);
 		
@@ -74,6 +72,7 @@ public class ActivityIniciar extends Activity{
 		this.setupParamters();//configura os parametros do jogo
 		
 		gameScreen = new GameScreen(this);
+		gameScreen.setHandler(handler);
 		
 		setContentView(gameScreen);
 		Thread t = new Thread(gameScreen); 
