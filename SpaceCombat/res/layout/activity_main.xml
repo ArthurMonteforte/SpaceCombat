@@ -36,33 +36,44 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btnIniciar"
+            android:id="@+id/btnInstrucoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnRanking"
+            android:layout_below="@+id/btnRanking"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:onClick="botaoIniciar"
-            android:text="@string/btnIniciar" />
-
-        <Button
-            android:id="@+id/btnRanking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:onClick="botaoRanking"
-            android:text="@string/btnRanking" />
+            android:layout_marginTop="17dp"
+            android:onClick="botaoInstrucao"
+            android:text="@string/btnInstrucoes" />
 
         <Button
             android:id="@+id/btnSair"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnRanking"
+            android:layout_below="@+id/btnInstrucoes"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="18dp"
             android:onClick="botaoSair"
             android:text="@string/btnSair" />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnIniciar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:onClick="botaoRanking"
+            android:text="@string/btnRanking" />
+
+        <Button
+            android:id="@+id/btnIniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+            android:onClick="botaoIniciar"
+            android:text="@string/btnIniciar" />
 
     </RelativeLayout>
     

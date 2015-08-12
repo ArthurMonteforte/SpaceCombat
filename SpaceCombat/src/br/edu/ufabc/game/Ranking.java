@@ -41,7 +41,7 @@ public class Ranking extends Activity implements OnClickListener{
 		ajustaConteudo();
 		refresh = (ImageView)findViewById(R.id.refresh);
 		refresh.setOnClickListener(this);
-		listGamers = (ListView)findViewById(R.id.listGamers);
+		listGamers = (ListView)findViewById(R.id.listRanking);
 	}
 
 	public void ajustaConteudo(){

@@ -54,6 +54,22 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+
+	public void botaoInstrucao(View view){
+		//setContentView(R.layout.tela_iniciar);
+		
+		String msg = "1";
+
+		Bundle param = new Bundle();
+		param.putString("msg", msg);
+
+		Intent intent = new Intent(this, Instructions.class);
+
+		intent.putExtras(param);
+
+		startActivity(intent);
+	}
+
 	
 	public void botaoSair(View view){
 		Intent intent1 = new Intent(Intent.ACTION_MAIN); 

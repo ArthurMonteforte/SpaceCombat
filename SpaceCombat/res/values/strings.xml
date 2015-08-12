@@ -17,5 +17,9 @@
     <string name="tituloRanking">Ranking</string>
     <string name="refresh">refresh</string>
     <string name="txtNome">Apelido</string>
+    <string name="btnInstrucoes">Instruções do Jogo</string>
+    <string name="tituloInstrucoes">Instruções do Jogo</string>
+    <string name="txtInstrucoes">Clique no ícone para atualizar</string>
+    <string name="txtInst">Clique no ícone para atualizar</string>
 
 </resources>

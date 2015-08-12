@@ -27,6 +27,7 @@
         <activity android:name="ActivityIniciar"></activity>
         <activity android:name="Ranking"></activity>
         <activity android:name="ActivityGameOver"></activity>
+        <activity android:name="Instructions"></activity>
     </application>
 
 </manifest>
