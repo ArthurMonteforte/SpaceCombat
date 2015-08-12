@@ -47,16 +47,6 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/tituloRanking" >
         </ListView>
-
-        <ImageView
-            android:id="@+id/refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp"
-            android:contentDescription="@string/refresh"
-            android:src="@android:drawable/ic_menu_rotate" />
                 
     </RelativeLayout>
     

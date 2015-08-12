@@ -46,16 +46,16 @@ public class ActivityIniciar extends Activity{
 		};*/
 	}
 	
-	public void botaoTeste(View view){
+	/*public void botaoTeste(View view){
 		EditText txtApelido = (EditText)findViewById(R.id.txtApelido);
 		String msg = txtApelido.getText().toString();
 		Bundle param2 = new Bundle();
 		param2.putString("msg",msg);
 		
-		Intent intent = new Intent(this, ActivityGameOver.class);
+		Intent intent = new Intent(this, Ranking.class);
 		intent.putExtras(param2);
 		startActivity(intent);
-	}
+	}*/
 	
 	public void botaoComecar(View view){
 		// Ao clicar no botão Começar, inicia-se a view GameScreen (custom view do jogo)

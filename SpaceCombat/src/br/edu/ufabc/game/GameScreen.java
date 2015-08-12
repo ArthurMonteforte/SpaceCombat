@@ -2,14 +2,19 @@ package br.edu.ufabc.game;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+
+import android.os.Bundle;
+
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 //classe que desenha a dela do jogo...é a view propriamente dita.
 //Deve ser uma thread pois deve se auto desenhar.
@@ -25,8 +30,10 @@ public class GameScreen extends View implements Runnable {
 	private Projectiles projectiles;
 	public int tempo = 0;
 	
+
 	Handler handler;
 	
+
 	
 	public GameScreen(Context context) {
 		super(context);
@@ -93,10 +100,11 @@ public class GameScreen extends View implements Runnable {
 				}
 			}
 			
-			if(robot.getMarcado() == 1){
+
 				/*Message msg = new Message();
 				msg.what = 100;
 				handler.sendMessage(msg);*/
+
 			}
 			
 			
@@ -108,7 +116,7 @@ public class GameScreen extends View implements Runnable {
 			//enemy.update();
 		}
 	
-	}
+	
 		
 	
 
