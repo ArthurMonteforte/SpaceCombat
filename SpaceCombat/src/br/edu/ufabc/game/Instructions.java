@@ -68,7 +68,7 @@ public class Instructions extends Activity {
 	
 	public void clickIng(View v){
 		ReadData task1 = new ReadData();
-		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/bPJWkyhAQy?indent=0"});
+		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/cbgrGgZNlu?indent=2"});
 		
 	}
 	

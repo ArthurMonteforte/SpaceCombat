@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 	public void botaoRanking(View view){
 		rankingBD = new RankingBD(this);
 		setContentView(R.layout.ranking);
-		// preciso de uma instancia "legível" da minha base
+		
 		SQLiteDatabase db = rankingBD.getReadableDatabase();
 		
 		Cursor cursor;
@@ -50,10 +50,10 @@ public class MainActivity extends Activity {
 		cursor = db.query("tblRanking", new String[]{"name","score"}, null , null, null, null, "score desc");
 
 		String resultado="";
-		// há registros no resultado da query?
+		
 		if (cursor.moveToFirst()){
 			
-			// itero sobre estes registros
+			
 			do{
 				resultado += cursor.getInt(1)+" - "+cursor.getString(0)+"\n";
 			} while (cursor.moveToNext());

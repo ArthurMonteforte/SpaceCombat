@@ -50,7 +50,7 @@ public class ActivityGameOver extends Activity{
 		db.close();
 		
 		Toast.makeText(this,"Salvo com sucesso!",Toast.LENGTH_SHORT).show();
-		//setContentView(R.layout.activity_main);
+		
 		String msg = "1";
 
 		Bundle param = new Bundle();

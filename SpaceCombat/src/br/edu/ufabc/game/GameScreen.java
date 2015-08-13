@@ -45,7 +45,7 @@ public class GameScreen extends View implements Runnable {
 		if (update){
 			if(tempo%1000 == 0){
 				int random = 0 + (int)(Math.random()*100);
-				if(random <= 30){
+				if(random <= 10){
 					baArmy.createBatAlienEnemy();
 				}
 				else{
