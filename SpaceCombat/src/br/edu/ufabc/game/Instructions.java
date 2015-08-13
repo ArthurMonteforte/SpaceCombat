@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Instructions extends Activity implements OnClickListener{
+public class Instructions extends Activity {
 	ListView listInst;
 	TextView txtInst;
 	
@@ -71,13 +71,7 @@ public class Instructions extends Activity implements OnClickListener{
 		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/bPJWkyhAQy?indent=0"});
 		
 	}
-	@Override
-	public void onClick(View v) {
-		ReadData task1 = new ReadData();
-		task1.execute(new String[]{"http://www.json-generator.com/api/json/get/cgvmAHREPm?indent=0"});
-		
-		
-	}
+	
 	
 	private class ReadData extends AsyncTask<String, Void, Boolean>{
 

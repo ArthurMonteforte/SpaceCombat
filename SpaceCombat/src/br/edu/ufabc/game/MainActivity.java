@@ -80,6 +80,10 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void voltar(View view){
+		setContentView(R.layout.activity_main);
+		
+	}
 	
 	public void voltarInicio(View view){
 		setContentView(R.layout.activity_main);
